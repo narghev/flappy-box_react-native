@@ -11,19 +11,34 @@ export default class App extends React.Component {
 
   constructor(){
     super();
+    this.interval = null;
     this.state = {
-      boxPosition: {
-        bottom: 0,
-        left: 0
-      }
+      bottom: 0
     };
   }
 
+  touchHandler = ():void => {
+    this.setState({bottom: this.state.bottom + 100});
+  }
+
+  componentDidMount(){
+    this.interval = setInterval(()=>{
+      if (this.state.bottom > 0)
+        this.setState({bottom: this.state.bottom-3});
+    }, 25);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.interval);
+  }
+
   render() {
+    const { bottom } = this.state;
+
     return (
-      <TouchableWithoutFeedback onPress={()=>{console.log('touch')}}>
+      <TouchableWithoutFeedback onPress={this.touchHandler}>
         <View style={styles.container}>
-          <Box {...{...this.state.boxPosition}} />
+          <Box {...{bottom}} />
         </View>
       </TouchableWithoutFeedback>
     );
