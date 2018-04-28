@@ -3,13 +3,14 @@ import {
   Text
 } from 'react-native';
 import Game from './components/game';
+import MainMenu from './components/menu';
 
 export default class App extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      inGame: true
+      inGame: false
     }
   }
 
@@ -17,11 +18,18 @@ export default class App extends React.Component {
     this.setState({inGame: false});
   }
 
+  start = ():void => {
+    this.setState({inGame: true});
+  }
+
   render() {
     const { inGame } = this.state;
 
-    const content = inGame ? <Game {...{gameOver: this.gameOver}} /> :
-      <Text style={{color: 'blue', fontSize: 30}}>Dead</Text>
+
+
+    const content = inGame ?
+      <Game {...{gameOver: this.gameOver}} /> :
+      <MainMenu {...{start: this.start}} />
 
     return content;
   }
