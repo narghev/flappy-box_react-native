@@ -14,8 +14,8 @@ class Box extends React.Component {
 
 const style = StyleSheet.create({
   box: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     backgroundColor: '#ff0000',
     position: 'absolute',
     left: '30%'
