@@ -1,53 +1,28 @@
 import React from 'react';
 import {
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View
+  Text
 } from 'react-native';
-import Box from './components/box';
+import Game from './components/game';
 
 export default class App extends React.Component {
 
   constructor(){
     super();
-    this.interval = null;
     this.state = {
-      bottom: 0
-    };
+      inGame: true
+    }
   }
 
-  touchHandler = ():void => {
-    this.setState({bottom: this.state.bottom + 100});
-  }
-
-  componentDidMount(){
-    this.interval = setInterval(()=>{
-      if (this.state.bottom > 0)
-        this.setState({bottom: this.state.bottom-3});
-    }, 25);
-  }
-
-  componentWillUnmount(){
-    clearInterval(this.interval);
+  gameOver = ():void => {
+    this.setState({inGame: false});
   }
 
   render() {
-    const { bottom } = this.state;
+    const { inGame } = this.state;
 
-    return (
-      <TouchableWithoutFeedback onPress={this.touchHandler}>
-        <View style={styles.container}>
-          <Box {...{bottom}} />
-        </View>
-      </TouchableWithoutFeedback>
-    );
+    const content = inGame ? <Game {...{gameOver: this.gameOver}} /> :
+      <Text style={{color: 'blue', fontSize: 30}}>Dead</Text>
+
+    return content;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '100%'
-  },
-});
