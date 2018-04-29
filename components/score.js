@@ -14,7 +14,8 @@ class Score extends React.Component {
 
 const styles = StyleSheet.create({
   score: {
-    fontSize: 100
+    fontSize: 100,
+    color: '#212121'
   },
   view: {
     position: 'absolute',

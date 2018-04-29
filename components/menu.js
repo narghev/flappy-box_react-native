@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#FFF9C4'
   },
   button: {
     backgroundColor: 'blue',

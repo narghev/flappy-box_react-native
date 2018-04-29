@@ -16,7 +16,7 @@ const style = StyleSheet.create({
   box: {
     width: 50,
     height: 50,
-    backgroundColor: '#ff0000',
+    backgroundColor: '#b71c1c',
     position: 'absolute',
     left: 100
   }

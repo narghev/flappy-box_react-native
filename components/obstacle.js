@@ -16,7 +16,7 @@ class Obstacle extends React.Component {
 
 const styles = StyleSheet.create({
   obstacle: {
-    backgroundColor: 'orange',
+    backgroundColor: '#3E2723',
     position: 'absolute',
     width: 100,
     bottom: 0
