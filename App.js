@@ -14,18 +14,16 @@ export default class App extends React.Component {
     }
   }
 
-  gameOver = ():void => {
+  gameOver = () => {
     this.setState({inGame: false});
   }
 
-  start = ():void => {
+  start = () => {
     this.setState({inGame: true});
   }
 
   render() {
     const { inGame } = this.state;
-
-
 
     const content = inGame ?
       <Game {...{gameOver: this.gameOver}} /> :

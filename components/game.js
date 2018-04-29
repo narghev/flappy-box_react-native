@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Box from './box';
 import Obstacle from './obstacle';
+import collision from '../helper/collision';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -42,7 +43,13 @@ export default class App extends React.Component {
 
   componentDidMount(){
     this.boxInterval = setInterval(()=>{
-      const {bottom, top} = this.state;
+      const {bottom, top, obstacle} = this.state;
+
+      if (obstacle && collision({bottom, right: 150, left: 100}, {...obstacle, right: obstacle.left + 100})){
+        this.props.gameOver();
+        return;
+      }
+
       if (bottom > 0){
         this.setState({
           bottom: bottom - 3,

@@ -18,6 +18,6 @@ const style = StyleSheet.create({
     height: 50,
     backgroundColor: '#ff0000',
     position: 'absolute',
-    left: '30%'
+    left: 100
   }
 });
