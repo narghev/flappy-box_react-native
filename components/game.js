@@ -9,6 +9,7 @@ import {
 import Box from './box';
 import Obstacle from './obstacle';
 import collision from '../helper/collision';
+import Score from './score';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -63,7 +64,7 @@ export default class App extends React.Component {
       if (!obstacle) return;
 
       if (obstacle.left < -100){
-        this.setState({obstacle: null});
+        this.setState({obstacle: null}, this.props.increaseScore);
         return;
       }
 
@@ -93,6 +94,7 @@ export default class App extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={this.touchHandler}>
         <View style={styles.container}>
+          <Score score={this.props.score} />
           <Box {...{bottom}} />
           {obstacle && <Obstacle {...{...obstacle}}/>}
         </View>
@@ -104,6 +106,9 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });

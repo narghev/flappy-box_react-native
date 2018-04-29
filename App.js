@@ -10,7 +10,8 @@ export default class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      inGame: false
+      inGame: false,
+      score: 0
     }
   }
 
@@ -19,15 +20,19 @@ export default class App extends React.Component {
   }
 
   start = () => {
-    this.setState({inGame: true});
+    this.setState({inGame: true, score: 0});
+  }
+
+  increaseScore = () => {
+    this.setState({score: this.state.score + 1});
   }
 
   render() {
-    const { inGame } = this.state;
+    const { inGame, score } = this.state;
 
     const content = inGame ?
-      <Game {...{gameOver: this.gameOver}} /> :
-      <MainMenu {...{start: this.start}} />
+      <Game {...{gameOver: this.gameOver, score, increaseScore: this.increaseScore}} /> :
+      <MainMenu {...{start: this.start, score}} />
 
     return content;
   }

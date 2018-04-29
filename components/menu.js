@@ -2,14 +2,17 @@ import React from 'react';
 import {
   View,
   Button,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native';
+import Score from './score';
 
 export default class App extends React.Component {
 
   render() {
     return(
       <View style={styles.menu}>
+        <Score score={this.props.score} />
         <Button title="Play" onPress={this.props.start} style={styles.button} />
       </View>
     );
