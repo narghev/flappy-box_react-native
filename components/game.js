@@ -57,7 +57,7 @@ export default class App extends React.Component {
           top: top + 3
         });
       }
-    }, 25);
+    }, 15);
 
     this.obstacleMoveInterval = setInterval(()=>{
       const {obstacle} = this.state;
@@ -69,7 +69,7 @@ export default class App extends React.Component {
       }
 
       this.setState({ obstacle: {...obstacle, left: obstacle.left - 3}});
-    }, 25);
+    }, 15);
 
     this.obstacleInterval = setInterval(()=>{
       const {obstacle} = this.state;
